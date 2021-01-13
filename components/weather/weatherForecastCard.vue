@@ -1,12 +1,12 @@
 <template>
-  <div className="forecastCard">
+  <div class="forecastCard">
     <img
       v-bind:src="`http://openweathermap.org/img/wn/${$props.weather.weather[0].icon}@2x.png`"
       alt=""
     />
     <h6>
       {{ $props.weather.temp.max | celcius }}
-      <span className="low">| {{ $props.weather.temp.min }}</span>
+      <span class="low">| {{ $props.weather.temp.min | celcius }}</span>
     </h6>
   </div>
 </template>
@@ -31,10 +31,10 @@ export default {
   },
   filters: {
     celcius: function (value) {
-      return `${Math.round(parseFloat(value) - 273.15)}°C`
+      return `${Math.round(parseFloat(value) - 273.15)}°C`;
     },
   },
-}
+};
 </script>
 
 <style>
