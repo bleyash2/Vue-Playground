@@ -9,10 +9,7 @@
             {{ $store.state.currentLocation.name }}
           </h2>
           <h4 class="weather">
-            {{
-              $store.state.weatherData.current.weather[0].description
-                | titleCase
-            }}
+            {{ $store.state.weatherData.current.weather[0].description | titleCase }}
           </h4>
         </div>
       </div>
@@ -29,20 +26,20 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import Vuex from 'vuex'
-import weatherDetails from '../../components/weather/weatherDetails.vue'
+import Vue from "vue";
+import Vuex from "vuex";
+import weatherDetails from "../../components/weather/weatherDetails.vue";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
     weatherData: {},
     currentLocation: {
       id: 2158177,
-      name: 'Melbourne',
-      state: '',
-      country: 'AU',
+      name: "Melbourne",
+      state: "",
+      country: "AU",
       coord: {
         lon: 144.963318,
         lat: -37.813999,
@@ -51,41 +48,39 @@ const store = new Vuex.Store({
   },
   mutations: {
     setWeatherData(state, payload) {
-      state.weatherData = payload.weatherData
+      state.weatherData = payload.weatherData;
     },
   },
-})
+});
 
 export default {
   components: { weatherDetails },
   store: store,
 
   async fetch() {
-    const { lon, lat } = store.state.currentLocation.coord
+    const { lon, lat } = store.state.currentLocation.coord;
     const weatherData = await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${'d1e482dcfd9f8bf42f1f8153de6342d0'}`
-    )
-    const response = await weatherData.json()
-    store.commit('setWeatherData', { weatherData: response })
-    console.log(response)
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${"d1e482dcfd9f8bf42f1f8153de6342d0"}`
+    );
+    const response = await weatherData.json();
+    store.commit("setWeatherData", { weatherData: response });
   },
   filters: {
     capitalize: function (value) {
-      if (!value) return ''
-      value = value.toString()
-      return value.charAt(0).toUpperCase() + value.slice(1)
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
     },
 
     titleCase: function (value) {
-      let splitStr = value.toLowerCase().split(' ')
+      let splitStr = value.toLowerCase().split(" ");
       for (var i = 0; i < splitStr.length; i++) {
-        splitStr[i] =
-          splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1)
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
       }
-      return splitStr.join(' ')
+      return splitStr.join(" ");
     },
   },
-}
+};
 </script>
 
 <style>

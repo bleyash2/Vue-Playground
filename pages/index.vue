@@ -3,11 +3,12 @@
     <h2 class="title">Hello Vue</h2>
     <NuxtLink class="subtitle" to="/puzzle"> Sliding Puzzle</NuxtLink>
     <NuxtLink class="subtitle" to="/weather"> Weather</NuxtLink>
+    <NuxtLink class="subtitle" to="/vuestagram/"> Vuestagram</NuxtLink>
   </div>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style>
@@ -22,8 +23,8 @@ export default {}
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
